@@ -1,4 +1,4 @@
-// Consumer module for GridLAB-D
+// External module for GridLAB-D
 // Copyright (C) 2023 Regents of Leland Stanford Junior University
 
 #define DLMAIN
@@ -9,7 +9,7 @@
 #include <math.h>
 
 #include "gridlabd.h"
-#include "consumer.h"
+#include "myclass.h"
 
 EXPORT CLASS *init(CALLBACKS *fntable, MODULE *module, int argc, char *argv[])
 {
@@ -21,10 +21,11 @@ EXPORT CLASS *init(CALLBACKS *fntable, MODULE *module, int argc, char *argv[])
 
     INIT_MMF(consumer);
 
-    new consumer(module);
+    // TODO add class constructors here
+    new myclass(module);
 
     /* always return the first class registered */
-    return consumer::oclass;
+    return myclass::oclass;
 }
 
 
