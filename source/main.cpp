@@ -9,7 +9,12 @@
 #include <math.h>
 
 #include "gridlabd.h"
+
+// TODO: include all the class header files here
 #include "myclass.h"
+
+// TODO: declare module globals here
+char1024 my_module_global = "a default value";
 
 EXPORT CLASS *init(CALLBACKS *fntable, MODULE *module, int argc, char *argv[])
 {
@@ -21,22 +26,25 @@ EXPORT CLASS *init(CALLBACKS *fntable, MODULE *module, int argc, char *argv[])
 
     INIT_MMF(consumer);
 
-    // TODO add class constructors here
+    // TODO: construct the module's classes here
     new myclass(module);
 
-    /* always return the first class registered */
+    // TODO: publish any module globals here
+    gl_global_create("module_template::my_module_global",PT_char1024,(const char*)my_module_global,NULL);
+
+    // TODO: always return the first class registered
     return myclass::oclass;
 }
 
 
 EXPORT int do_kill(void*)
 {
-    /* if global memory needs to be released, this is a good time to do it */
+    // TODO: free global memory (if any)
     return 0;
 }
 
 EXPORT int check()
 {
-    /* if any objects have bad filenames, they'll fail on init() */
+    // TODO: run module checks (if any)
     return 0;
 }
