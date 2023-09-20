@@ -31,7 +31,7 @@ lib$(MODULE_NAME).so: $(SOURCE_FILES)
 status:
 	@test -d '$(GLD_SRC)' || ( echo "ERROR [make]: you must build in the current gridlabd shell" >/dev/stderr && false )
 	@test -f '$(GLD_SRC)/source/gridlabd.h' || ( echo "ERROR [make]: gridlabd source must be found at $(GLD_SRC)" >/dev/stderr && false )
-	@test -f '$(GLD_SRC)/source/build.h' || ( echo "ERROR [make]: gridlabd build must be found at $(GLD_SRC)" >/dev/stderr && false)
+	@test -f '$(GLD_SRC)/source/build.h' || ( echo "ERROR [make]: you must first build gridlabd in $(GLD_SRC)" >/dev/stderr && false)
 	@test ! -z '$(shell gridlabd.bin --version=name 2>/dev/null)' || ( echo "ERROR [make]: you must install gridlabd in the system" >/dev/stderr && false)
 	@echo GLD version....... $(shell gridlabd.bin --version 2>/dev/null)
 	@echo GLD source........ $(GLD_SRC)
