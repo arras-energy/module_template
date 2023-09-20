@@ -10,14 +10,15 @@ jobs:
   build:
 
     runs-on: ubuntu:latest
-    container: lfenergy/arras:develop
+    container: 
+      image: lfenergy/arras:develop
 
     steps:
     - uses: actions/checkout@v3
 
     - name: Build gridlabd
       run: |
-        git clone https://arras.energy/gridlabd -b develop /usr/local/opt/gridlabd/current/src
+        git clone https://arras.energy/gridlabd -b develop --depth 1 /usr/local/opt/gridlabd/current/src
         cd /usr/local/opt/gridlabd/current/src
         ./build.sh --clean --parallel --system
         cd -
@@ -25,6 +26,7 @@ jobs:
     - name: Build module
       run: |
         cd source
+        sudo apt-get install libtool-bin -y
         echo "make install" | gridlabd shell
         cd -
 
