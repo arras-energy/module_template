@@ -2,7 +2,7 @@
 
 .NOTPARALLEL: status
 
-MODULE_NAME = $(notdir $(abspath $(PWD)/..))
+MODULE_NAME = $(subst module_,,$(notdir $(abspath $(PWD)/..)))
 SOURCE_FILES = $(wildcard *.cpp)
 HEADER_FILES = $(wildcard *.h)
 
