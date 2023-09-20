@@ -1,0 +1,40 @@
+name: validate
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: lfenergy/arras:develop
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build gridlabd
+      run: |
+        git clone https://arras.energy/gridlabd -b develop /usr/local/opt/gridlabd/current/src
+        cd /usr/local/opt/gridlabd/current/src
+        ./build.sh --clean --parallel --system
+        cd -
+
+    - name: Build module
+      run: |
+        cd source
+        echo "make install" | gridlabd shell
+        cd -
+
+    - name: Validate module
+      run: gridlabd --validate
+        
+    - name: Upload artifacts on failure
+      uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: validate-result
+        path: |
+          validate.txt
+          validate.tar.gz

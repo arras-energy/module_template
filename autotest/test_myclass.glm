@@ -1,0 +1,10 @@
+module module_template;
+
+object myclass {
+    my_double 1.23;
+}
+
+clock {
+    starttime "2000-01-01 00:00:00";
+    stoptime "2001-01-01 00:00:00";
+}
