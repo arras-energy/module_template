@@ -20,6 +20,7 @@ jobs:
       run: |
         git clone https://arras.energy/gridlabd -b develop --depth 1 /usr/local/opt/gridlabd/current/src
         cd /usr/local/opt/gridlabd/current/src
+        ./setup.sh --local
         ./build.sh --clean --parallel --system
         cd -
 
