@@ -32,7 +32,7 @@ jobs:
         cd -
 
     - name: Validate module
-      run: gridlabd --validate
+      run: gridlabd --validate || tar cfz validate.tar.gz autotest/test_*/*
         
     - name: Upload artifacts on failure
       uses: actions/upload-artifact@v2
