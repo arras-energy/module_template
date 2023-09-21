@@ -1,3 +1,5 @@
+[![validate](https://github.com/arras-energy/module_template/actions/workflows/validate.yml/badge.svg)](https://github.com/arras-energy/module_template/actions/workflows/validate.yml)
+
 # Prerequisites
 
 You must install HiPAS GridLAB-D as follows:
