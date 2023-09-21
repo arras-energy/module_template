@@ -19,7 +19,6 @@ jobs:
     - name: Update build tools
       run: sudo apt-get install libtool-bin -y
 
-
     - name: Build module
       run: |
         cd source
