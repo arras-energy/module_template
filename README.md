@@ -16,7 +16,7 @@ ln -sf $PWD $(gridlabd --printenv | grep GLD_SRC | cut -f2 -d=)
 You can verify that this worked using the command in the module's source folder (not the `gridlabd` source folder):
 
 ~~~
-make check
+make status
 ~~~
 
 This should output the current `gridlabd` system installation, e.g.,
@@ -31,5 +31,5 @@ OS release........ Darwin 22.4.0
 
 # Build and Install
 
-To build and install the module, use the `make` and `make install` commands.
+To build and install the module, use the `make` and `make install` commands. You can verify the module installation using the command `make check` or `gridlabd -L MODULENAME`.
 
