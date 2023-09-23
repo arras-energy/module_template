@@ -16,18 +16,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Build gridlabd
-      run: |
-        git clone https://arras.energy/gridlabd -b develop --depth 1 /usr/local/opt/gridlabd/current/src
-        cd /usr/local/opt/gridlabd/current/src
-        ./setup.sh --local
-        ./build.sh --clean --parallel --system
-        cd -
+    - name: Update build tools
+      run: sudo apt-get install libtool-bin -y
+
 
     - name: Build module
       run: |
         cd source
-        sudo apt-get install libtool-bin -y
         echo "make install" | gridlabd shell
         cd -
 
