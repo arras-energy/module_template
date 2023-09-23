@@ -23,20 +23,20 @@ lib$(MODULE_NAME).la: $(OBJECT_FILES)
 
 lib$(MODULE_NAME).so: $(SOURCE_FILES) 
 	echo Creating $@...
-	eval $(foreach F,$(SOURCE_FILES),gcc -fPIC -I$(GLD_INC)/gridlabd $(CPPFLAGS) -DHAVE_CONFIG_H -c $F -o $(subst .cpp,.o,$F);) 
+	eval $(foreach F,$(SOURCE_FILES),gcc -fPIC -I'$(GLD_INC)/gridlabd' $(CPPFLAGS) -DHAVE_CONFIG_H -c $F -o $(subst .cpp,.o,$F);) 
 	gcc --shared $(LDFLAGS) $(OBJECT_FILES) -lstdc++ -lm -lc -o $@
 
 %.o: %.cpp $(HEADER_FILES)
 	echo Compiling $<...
-	libtool --quiet --tag=CXX --mode=compile gcc -g -I$(GLD_INC)/gridlabd $(CPPFLAGS) -DHAVE_CONFIG_H -O -c $<
+	libtool --quiet --tag=CXX --mode=compile gcc -g -I'$(GLD_INC)/gridlabd' $(CPPFLAGS) -DHAVE_CONFIG_H -O -c $<
 
 status:
 	test -x '$(shell which gridlabd)' || ( echo "ERROR [make]: you must install gridlabd in the system" >/dev/stderr && false)
 	test -d '$(GLD_INC)/gridlabd' || ( echo "ERROR [make]: you must make in a gridlabd shell" >/dev/stderr && false)
 	test -f '$(GLD_INC)/gridlabd/build.h' || ( echo "ERROR [make]: the system gridlabd install does not include build headers $(GLD_INC)" >/dev/stderr && false)
-	echo GLD version....... $(shell gridlabd --version=all 2>/dev/null)
-	echo GLD include........ $(GLD_INC)
-	echo GLD libraries..... $(GLD_LIB)
+	echo GLD version....... '$(shell gridlabd --version=all 2>/dev/null)'
+	echo GLD include....... '$(GLD_INC)'
+	echo GLD libraries..... '$(GLD_LIB)'
 
 clean:
 	rm -rf .libs
