@@ -23,20 +23,20 @@ lib$(MODULE_NAME).la: $(OBJECT_FILES)
 
 lib$(MODULE_NAME).so: $(SOURCE_FILES) 
 	echo Creating $@...
-	eval $(foreach F,$(SOURCE_FILES),gcc -fPIC -I$(GLD_SRC)/source -I$(GLD_SRC)/python $(CPPFLAGS) -DHAVE_CONFIG_H -c $F -o $(subst .cpp,.o,$F);) 
+	eval $(foreach F,$(SOURCE_FILES),gcc -fPIC -I$(GLD_INC)/gridlabd $(CPPFLAGS) -DHAVE_CONFIG_H -c $F -o $(subst .cpp,.o,$F);) 
 	gcc --shared $(LDFLAGS) $(OBJECT_FILES) -lstdc++ -lm -lc -o $@
 
 %.o: %.cpp $(HEADER_FILES)
 	echo Compiling $<...
-	libtool --quiet --tag=CXX --mode=compile gcc -g -I$(GLD_SRC)/source -I$(GLD_SRC)/python $(CPPFLAGS) -DHAVE_CONFIG_H -O -c $<
+	libtool --quiet --tag=CXX --mode=compile gcc -g -I$(GLD_INC)/gridlabd $(CPPFLAGS) -DHAVE_CONFIG_H -O -c $<
 
 status:
-	test -d '$(GLD_SRC)' || ( echo "ERROR [make]: you must build in the current gridlabd shell" >/dev/stderr && false )
-	test -f '$(GLD_SRC)/source/gridlabd.h' || ( echo "ERROR [make]: gridlabd source must be found at $(GLD_SRC)" >/dev/stderr && false )
-	test -f '$(GLD_SRC)/source/build.h' || ( echo "ERROR [make]: you must first build gridlabd in $(GLD_SRC)" >/dev/stderr && false)
+	test ! -z '$(GLD_BIN)/gridlabd.bin' || ( echo "ERROR [make]: you must build in the current gridlabd shell" >/dev/stderr && false )
+	test -f '$(GLD_INC)/gridlabd/gridlabd.h' || ( echo "ERROR [make]: gridlabd source must be found at $(GLD_SRC)" >/dev/stderr && false )
+	test -f '$(GLD_INC)/gridlabd/build.h' || ( echo "ERROR [make]: you must first build gridlabd in $(GLD_SRC)" >/dev/stderr && false)
 	test ! -z '$(shell gridlabd.bin --version=name 2>/dev/null)' || ( echo "ERROR [make]: you must install gridlabd in the system" >/dev/stderr && false)
 	echo GLD version....... $(shell gridlabd.bin --version 2>/dev/null)
-	echo GLD source........ $(GLD_SRC)
+	echo GLD include........ $(GLD_INC)
 	echo Github branch..... $(shell gridlabd.bin --version=branch 2>/dev/null)
 	echo GLD libraries..... $(GLD_LIB)
 	echo OS release........ $(shell gridlabd.bin --version=release 2>/dev/null)
