@@ -11,11 +11,9 @@ make status
 This should output the current `gridlabd` system installation, e.g.,
 
 ~~~
-GLD version....... HiPAS GridLAB-D 4.3.3-230731
-GLD source........ /usr/local/opt/gridlabd/4.3.3-230731-develop-darwin_22-x86_64/src
-Github branch..... develop
-GLD libraries..... /usr/local/opt/gridlabd/4.3.3-230731-develop-darwin_22-x86_64/lib/gridlabd
-OS release........ Darwin 22.4.0
+GLD version....... HiPAS GridLAB-D 4.3.3-230922 (develop) Darwin
+GLD include....... /usr/local/opt/gridlabd/4.3.3-230922-develop-darwin_22-x86_64/include
+GLD libraries..... /usr/local/opt/gridlabd/4.3.3-230922-develop-darwin_22-x86_64/lib/gridlabd
 ~~~
 
 # Build and Install
