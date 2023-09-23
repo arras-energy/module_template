@@ -2,5 +2,5 @@
       "application" : "gridlabd",
       "version" : 4.3,
       "tool-name" : "template",
-      "install-command" : "curl -sL https://raw.githubusercontent.com/dchassin/gridlabd-advisor/{branch}/install.sh | bash"
+      "install-command" : "curl -sL https://raw.githubusercontent.com/arras-energy/module_template/{branch}/install.sh | bash"
     }
