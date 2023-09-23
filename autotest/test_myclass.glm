@@ -1,4 +1,4 @@
-module module_template;
+module template;
 
 object myclass {
     my_double 1.23;
