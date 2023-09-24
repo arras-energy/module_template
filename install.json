@@ -1,6 +1,6 @@
 {
       "application" : "gridlabd",
       "version" : 4.3,
-      "tool-name" : "template",
-      "install-command" : "curl -sL https://raw.githubusercontent.com/arras-energy/module_template/{branch}/install.sh | bash"
+      "tool-name" : "{NAME}",
+      "install-command" : "curl -sL https://raw.githubusercontent.com/{REPO}/{BRANCH}/install.sh | bash"
     }
