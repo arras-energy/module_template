@@ -1,5 +1,5 @@
 {
       "application" : "gridlabd",
       "version" : 4.3,
-      "install-command" : "curl -sL https://raw.githubusercontent.com/${REPO}/${BRANCH}/install.sh 2>/dev/null | bash"
+      "install-command" : "curl -sL https://raw.githubusercontent.com/{REPO}/{BRANCH}/install.sh 2>/dev/null | bash"
     }
