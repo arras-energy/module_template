@@ -16,14 +16,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Update build tools
-      run: sudo apt-get install libtool-bin -y
-
     - name: Build module
-      run: |
-        cd source
-        echo "make install" | gridlabd shell
-        cd -
+      run: echo "cd source; make install" | gridlabd shell
 
     - name: Validate module
       run: gridlabd --validate
@@ -35,4 +29,4 @@ jobs:
         name: validate-result
         path: |
           validate.txt
-          validate.tar.gz
+          autotest/
